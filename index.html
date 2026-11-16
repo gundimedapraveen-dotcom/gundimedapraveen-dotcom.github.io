@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Praveen Kumar Gundimeda — AI Web Designer | Hyderabad</title>
-  <meta name="description" content="Praveen Kumar Gundimeda — AI Web Designer in Hyderabad crafting 3D WebGL experiences, AI-powered websites, LLM workflows, and high-converting digital flagships." />
-  <meta property="og:title" content="Praveen Kumar Gundimeda — AI Web Designer" />
-  <meta property="og:description" content="100% AI-powered Web Design, AI Automation & 3D Digital Experiences from Hyderabad. View portfolio, AI tool stack, and resume." />
+  <title>Praveen Kumar Gundimeda — AI Web Designer & Automation Specialist | Hyderabad</title>
+  <meta name="description" content="Praveen Kumar Gundimeda — AI Web Designer in Hyderabad offering 3D Web Design, WhatsApp Automation, CRM, ERP, AI Video Creation, and Data Analysis." />
+  <meta property="og:title" content="Praveen Kumar Gundimeda — AI Web Design, Automation & Digital Solutions" />
+  <meta property="og:description" content="AI-powered Web Design, WhatsApp Automation, CRM, ERP, AI Video Creation & Data Analysis from Hyderabad." />
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://gundimedapraveen-dotcom.github.io/" />
+  <meta property="og:url" content="https://gundimedapraveen-dotcom.github.io/gundimedapraveen.io/" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
@@ -232,7 +232,7 @@
     .hero-lead {
       font-size: 1.12rem;
       color: var(--muted);
-      max-width: 590px;
+      max-width: 600px;
       margin-bottom: 32px;
     }
     .hero-actions { display: flex; flex-wrap: wrap; gap: 14px; margin-bottom: 44px; }
@@ -270,6 +270,49 @@
     }
     .section-head h2 { font-size: clamp(2rem, 4vw, 3rem); line-height: 1.1; margin-top: 8px; }
     .section-desc { max-width: 440px; color: var(--muted); font-size: 0.96rem; }
+
+    /* Services Offered Grid (3x2) */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+    .service-card {
+      background: var(--glass);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 28px;
+      backdrop-filter: blur(12px);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+    }
+    .service-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(56, 189, 248, 0.5);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
+    }
+    .service-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 16px;
+    }
+    .service-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 12px;
+      background: rgba(56, 189, 248, 0.12);
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      display: grid;
+      place-items: center;
+      font-size: 1.15rem;
+      color: var(--accent);
+    }
+    .service-card h3 { font-size: 1.22rem; margin-bottom: 10px; }
+    .service-card p { font-size: 0.91rem; color: var(--muted); margin-bottom: 18px; }
+    .service-tags { display: flex; flex-wrap: wrap; gap: 7px; }
 
     /* AI Tools Section (2x2 Grid) */
     .ai-categories {
@@ -538,13 +581,12 @@
     }
 
     @media (max-width: 960px) {
-      .ai-categories, .about-grid, .contact-grid { grid-template-columns: 1fr; }
-      .pillars-grid { grid-template-columns: repeat(2, 1fr); }
-      .work-grid { grid-template-columns: 1fr; }
+      .services-grid, .pillars-grid { grid-template-columns: repeat(2, 1fr); }
+      .ai-categories, .about-grid, .contact-grid, .work-grid { grid-template-columns: 1fr; }
     }
     @media (max-width: 640px) {
       nav a.hide-sm { display: none; }
-      .pillars-grid, .hero-stats { grid-template-columns: 1fr; }
+      .services-grid, .pillars-grid, .hero-stats { grid-template-columns: 1fr; }
       .resume-item { grid-template-columns: 1fr; gap: 6px; }
       .drag-hint { display: none; }
     }
@@ -553,7 +595,7 @@
       body { background: #fff; color: #000; }
       #hero-3d, header, .studio-bar, .creator-only, #contact, .drag-hint, .toast { display: none !important; }
       .bg-glow { display: none; }
-      .profile-card, .pillar, .ai-box { border: 1px solid #ccc; background: #fff; color: #000; }
+      .profile-card, .pillar, .ai-box, .service-card { border: 1px solid #ccc; background: #fff; color: #000; }
       .gradient-text { -webkit-text-fill-color: #000; color: #000; }
     }
   </style>
@@ -572,6 +614,7 @@
         <span class="loc-pill hide-sm"><span class="pulse-dot"></span>Hyderabad, IN</span>
       </a>
       <nav>
+        <a href="#services" class="hide-sm">Services</a>
         <a href="#ai-stack" class="hide-sm">AI Stack</a>
         <a href="#work" class="hide-sm">Projects</a>
         <a href="#resume" class="hide-sm">Profile & Resume</a>
@@ -588,33 +631,144 @@
       <canvas id="hero-3d"></canvas>
       <div class="container">
         <div class="hero-content">
-          <div class="hero-tag mono">✦ AI-First Web Designer • Hyderabad</div>
+          <div class="hero-tag mono">✦ AI Web Designer & Automation Architect • Hyderabad</div>
           <h1><span class="gradient-text">Praveen Kumar Gundimeda</span></h1>
           <p class="hero-lead">
-            I specialize exclusively in <strong>AI-Powered Web Design, LLM Workflows & 3D Digital Experiences</strong>—combining generative art direction, n8n automation orchestration, and AI-assisted development to launch high-converting websites in days.
+            I deliver <strong>AI-Powered 3D Websites, WhatsApp Automation, Custom CRM/ERP Systems, AI Video Creation & Data Analysis</strong>—helping modern businesses launch faster, automate operations, and scale with intelligence.
           </p>
           <div class="hero-actions">
-            <a href="#work" class="btn btn-primary">Explore Selected Work</a>
-            <a href="#ai-stack" class="btn btn-outline">Inspect AI Tool Stack</a>
+            <a href="#services" class="btn btn-primary">Explore Services</a>
+            <a href="#work" class="btn btn-outline">View Projects</a>
             <a href="https://www.linkedin.com/in/praveen-kumar-gundimeda-133747134/" target="_blank" rel="noopener noreferrer" class="btn btn-outline">LinkedIn ↗</a>
           </div>
           <div class="hero-stats">
             <div>
               <div class="stat-num">100% AI</div>
-              <div class="stat-label">Web Design Workflow</div>
+              <div class="stat-label">Web & Workflow Stack</div>
             </div>
             <div>
               <div class="stat-num">3D + WebGL</div>
               <div class="stat-label">Interactive Craft</div>
             </div>
             <div>
-              <div class="stat-num">3x Faster</div>
-              <div class="stat-label">Concept to Launch</div>
+              <div class="stat-num">End-to-End</div>
+              <div class="stat-label">CRM • ERP • Automation</div>
             </div>
           </div>
         </div>
       </div>
       <div class="drag-hint mono">Move cursor to interact with 3D scene</div>
+    </section>
+
+    <!-- Services Offered -->
+    <section id="services">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <span class="mono" style="color:var(--accent);">Services Offered</span>
+            <h2>Complete AI, Web & Business Solutions.</h2>
+          </div>
+          <p class="section-desc">From high-converting 3D websites to WhatsApp bots, CRM/ERP pipelines, AI videos, and executive data dashboards—all under one roof.</p>
+        </div>
+
+        <div class="services-grid">
+          <div class="service-card">
+            <div>
+              <div class="service-top">
+                <div class="service-icon">◈</div>
+                <span class="mono" style="color:var(--accent);">01</span>
+              </div>
+              <h3>AI Web Design & 3D Sites</h3>
+              <p>Bespoke responsive websites and interactive 3D WebGL landing pages engineered with AI tools for speed, visual authority, and high conversions.</p>
+            </div>
+            <div class="service-tags">
+              <span class="tag">3D WebGL</span>
+              <span class="tag">Framer / Webflow</span>
+              <span class="tag">Conversion UX</span>
+            </div>
+          </div>
+
+          <div class="service-card">
+            <div>
+              <div class="service-top">
+                <div class="service-icon">💬</div>
+                <span class="mono" style="color:var(--accent);">02</span>
+              </div>
+              <h3>WhatsApp Automation</h3>
+              <p>24/7 intelligent WhatsApp Business bots for instant lead capture, automated appointment booking, order updates, and LLM-powered customer support.</p>
+            </div>
+            <div class="service-tags">
+              <span class="tag">WhatsApp API</span>
+              <span class="tag">n8n Workflows</span>
+              <span class="tag">AI Chatbots</span>
+            </div>
+          </div>
+
+          <div class="service-card">
+            <div>
+              <div class="service-top">
+                <div class="service-icon">◎</div>
+                <span class="mono" style="color:var(--accent);">03</span>
+              </div>
+              <h3>CRM Implementation</h3>
+              <p>Custom Customer Relationship Management systems with automated lead routing, follow-up reminders, pipeline tracking, and website-to-CRM sync.</p>
+            </div>
+            <div class="service-tags">
+              <span class="tag">Lead Pipelines</span>
+              <span class="tag">API Sync</span>
+              <span class="tag">Sales Automation</span>
+            </div>
+          </div>
+
+          <div class="service-card">
+            <div>
+              <div class="service-top">
+                <div class="service-icon">⬡</div>
+                <span class="mono" style="color:var(--accent);">04</span>
+              </div>
+              <h3>ERP Solutions</h3>
+              <p>Unified Enterprise Resource Planning workflows connecting inventory, invoicing, operations, vendor management, and custom internal portals.</p>
+            </div>
+            <div class="service-tags">
+              <span class="tag">Operations</span>
+              <span class="tag">Billing & Inventory</span>
+              <span class="tag">Orchestration</span>
+            </div>
+          </div>
+
+          <div class="service-card">
+            <div>
+              <div class="service-top">
+                <div class="service-icon">▶</div>
+                <span class="mono" style="color:var(--accent);">05</span>
+              </div>
+              <h3>AI Video Creation</h3>
+              <p>Studio-grade AI commercial reels, product explainers, generative brand motion visuals, and promotional videos tailored for web and social ads.</p>
+            </div>
+            <div class="service-tags">
+              <span class="tag">Runway Gen-3</span>
+              <span class="tag">Luma AI</span>
+              <span class="tag">Motion Ads</span>
+            </div>
+          </div>
+
+          <div class="service-card">
+            <div>
+              <div class="service-top">
+                <div class="service-icon">▤</div>
+                <span class="mono" style="color:var(--accent);">06</span>
+              </div>
+              <h3>Data Analysis & BI</h3>
+              <p>Turn raw business, sales, and marketing data into clean KPI dashboards, automated reporting pipelines, and AI-driven actionable insights.</p>
+            </div>
+            <div class="service-tags">
+              <span class="tag">KPI Dashboards</span>
+              <span class="tag">AI Insights</span>
+              <span class="tag">Automated Reports</span>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
 
     <!-- AI Tools Expertise -->
@@ -660,7 +814,7 @@
               <span class="tool-chip"><span>●</span> automation orchestration</span>
               <span class="tool-chip"><span>●</span> AI-assisted development</span>
             </div>
-            <p>Connecting sleek web interfaces to n8n pipelines, automated lead routing, custom API integrations, and intelligent LLM orchestration.</p>
+            <p>Connecting sleek web interfaces, WhatsApp, CRM, and ERP systems via n8n pipelines, custom API integrations, and intelligent LLM orchestration.</p>
           </div>
 
           <div class="ai-box">
@@ -681,7 +835,7 @@
 
           <div class="ai-box">
             <div class="ai-box-title">
-              <h3>AI 3D, Visuals & Motion</h3>
+              <h3>AI 3D, Video & Visuals</h3>
               <span class="mono" style="color:var(--accent);">04</span>
             </div>
             <div class="tool-chips">
@@ -692,7 +846,7 @@
               <span class="tool-chip"><span>●</span> Adobe Firefly</span>
               <span class="tool-chip"><span>●</span> Three.js + WebGL</span>
             </div>
-            <p>Bespoke 3D hero assets, consistent brand imagery, generative textures, and seamless motion loops without stock clichés.</p>
+            <p>Bespoke 3D hero assets, AI video creation, consistent brand imagery, and seamless motion loops without stock clichés.</p>
           </div>
         </div>
       </div>
@@ -706,7 +860,7 @@
             <span class="mono" style="color:var(--accent);">Portfolio Showcase</span>
             <h2>Selected AI Web Design Work</h2>
           </div>
-          <p class="section-desc">Explore how AI design architecture, 3D interactivity, and sharp visual hierarchy come together for client websites.</p>
+          <p class="section-desc">Explore how AI design architecture, 3D interactivity, automation, and sharp visual hierarchy come together for client projects.</p>
         </div>
 
         <div class="studio-bar">
@@ -733,7 +887,7 @@
             <span class="mono" style="color:var(--accent);">The AI Advantage</span>
             <h2>What clients can expect.</h2>
           </div>
-          <p class="section-desc">Hiring an AI Web Designer means getting agency-grade 3D craft and strategic depth at startup speed.</p>
+          <p class="section-desc">Partnering with an AI Web & Automation specialist gives you agency-grade 3D craft, smart systems, and business clarity.</p>
         </div>
 
         <div class="pillars-grid">
@@ -743,19 +897,19 @@
             <p>AI-accelerated wireframing and prototyping lets us iterate live together and ship production sites 3x faster.</p>
           </div>
           <div class="pillar">
-            <span class="mono pillar-num">02 / 3D Depth</span>
-            <h3>Interactive WebGL</h3>
-            <p>Custom 3D scenes, Spline objects, and tactile micro-interactions that immediately differentiate your brand.</p>
+            <span class="mono pillar-num">02 / 3D & Video</span>
+            <h3>High-Impact Visuals</h3>
+            <p>Custom 3D scenes, Spline objects, and AI video assets that immediately elevate your brand positioning.</p>
           </div>
           <div class="pillar">
             <span class="mono pillar-num">03 / Automation</span>
-            <h3>Smart AI Workflows</h3>
-            <p>Sites wired with n8n automation, API integrations, and LLM/RAG capabilities to capture and qualify leads effortlessly.</p>
+            <h3>WhatsApp, CRM & ERP</h3>
+            <p>Sites connected with n8n automation, WhatsApp bots, CRM/ERP pipelines, and API integrations that run 24/7.</p>
           </div>
           <div class="pillar">
-            <span class="mono pillar-num">04 / Performance</span>
-            <h3>Clean & Responsive</h3>
-            <p>Mobile-first, SEO-structured, and performance-tuned code ready to deploy on Vercel, Webflow, or Framer.</p>
+            <span class="mono pillar-num">04 / Intelligence</span>
+            <h3>Data-Driven Decisions</h3>
+            <p>Built-in tracking, clean KPI dashboards, and data analysis so every marketing rupee delivers measurable ROI.</p>
           </div>
         </div>
       </div>
@@ -797,9 +951,9 @@
       <div class="container contact-grid">
         <div>
           <span class="mono" style="color:var(--accent);">Let’s Collaborate</span>
-          <h2 style="font-size:clamp(2.2rem,4vw,3.3rem); line-height:1.08; margin:12px 0 20px;">Ready for an AI-crafted website?</h2>
+          <h2 style="font-size:clamp(2.2rem,4vw,3.3rem); line-height:1.08; margin:12px 0 20px;">Ready to build & automate?</h2>
           <p style="color:var(--muted); max-width:440px; margin-bottom:28px;">
-            Based in Hyderabad and collaborating with clients globally. Share your vision and timeline—I’ll respond with a tailored concept plan.
+            Based in Hyderabad and collaborating with clients globally. Whether you need a 3D AI website, WhatsApp automation, CRM/ERP setup, AI video, or data analysis—share your goals below.
           </p>
           <div class="contact-links">
             <div><strong style="color:var(--accent);">Designer:</strong> Praveen Kumar Gundimeda</div>
@@ -819,17 +973,19 @@
             <input id="cEmail" type="email" required placeholder="you@company.com" />
           </div>
           <div class="field">
-            <label for="cType">What do you need?</label>
+            <label for="cType">Service Needed</label>
             <select id="cType">
-              <option>AI-Designed 3D Landing Page</option>
-              <option>AI Website + n8n Workflow Automation</option>
-              <option>Full Company / Startup Website</option>
-              <option>Personal Brand Portfolio</option>
+              <option>AI-Designed 3D Website / Landing Page</option>
+              <option>WhatsApp Automation & n8n Workflows</option>
+              <option>Custom CRM / ERP Implementation</option>
+              <option>AI Video Creation & Motion Ads</option>
+              <option>Data Analysis & BI Dashboards</option>
+              <option>Full Digital & AI Transformation Package</option>
             </select>
           </div>
           <div class="field">
             <label for="cMsg">Project Details</label>
-            <textarea id="cMsg" rows="4" required placeholder="Tell me about your goals, timeline, and inspiration..."></textarea>
+            <textarea id="cMsg" rows="4" required placeholder="Tell me about your goals, timeline, and what you want to build or automate..."></textarea>
           </div>
           <button type="submit" class="btn btn-primary" style="width:100%;">Send Inquiry via Email</button>
           <p id="cStatus" style="display:none; color:#4ADE80; font-size:0.9rem;">
@@ -841,7 +997,7 @@
   </main>
 
   <footer class="container" style="border-top:1px solid var(--border);">
-    <span>© <span id="year"></span> Praveen Kumar Gundimeda — AI Web Designer, Hyderabad.</span>
+    <span>© <span id="year"></span> Praveen Kumar Gundimeda — AI Web Designer & Automation Specialist, Hyderabad.</span>
     <div style="display:flex; gap:20px; flex-wrap:wrap; align-items:center;">
       <a href="mailto:gundimedapraveen@gmail.com" style="color:inherit; text-decoration:none;">gundimedapraveen@gmail.com</a>
       <a href="https://www.linkedin.com/in/praveen-kumar-gundimeda-133747134/" target="_blank" rel="noopener noreferrer" style="color:inherit; text-decoration:none;">LinkedIn ↗</a>
@@ -863,7 +1019,7 @@
         <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px;">
           <div class="field">
             <label>Category *</label>
-            <input id="pCategory" required placeholder="e.g., AI SaaS / 3D Web" />
+            <input id="pCategory" required placeholder="e.g., AI Web / WhatsApp / CRM" />
           </div>
           <div class="field">
             <label>Year *</label>
@@ -894,7 +1050,7 @@
         </div>
         <div class="field">
           <label>Case Study / Deliverables Details</label>
-          <textarea id="pDetails" rows="3" placeholder="Explain the AI workflow, 3D elements, and client outcome..."></textarea>
+          <textarea id="pDetails" rows="3" placeholder="Explain the AI workflow, automation, 3D elements, and client outcome..."></textarea>
         </div>
         <button type="submit" class="btn btn-primary" style="margin-top:6px;">Save Project to Portfolio</button>
       </form>
@@ -1049,7 +1205,6 @@
       group.position.y = window.innerWidth > 900 ? 0.15 : -0.35;
       scene.add(group);
 
-      // 1) Liquid-Crystal Morphing AI Core
       const coreGeo = new THREE.IcosahedronGeometry(1.38, 4);
       const posAttr = coreGeo.attributes.position;
       const origPos = new Float32Array(posAttr.array.length);
@@ -1064,7 +1219,6 @@
       const coreMesh = new THREE.Mesh(coreGeo, coreMat);
       group.add(coreMesh);
 
-      // 2) Glowing Neural Wireframe Halo
       const shellGeo = new THREE.IcosahedronGeometry(1.62, 2);
       const shellMat = new THREE.MeshBasicMaterial({
         color: 0x38BDF8,
@@ -1075,7 +1229,6 @@
       const shellMesh = new THREE.Mesh(shellGeo, shellMat);
       group.add(shellMesh);
 
-      // 3) Precision Orbital Gyro Rings + Accent Nodes
       const ring1Geo = new THREE.TorusGeometry(2.15, 0.012, 16, 120);
       const ring1Mat = new THREE.MeshBasicMaterial({ color: 0x818CF8, transparent: true, opacity: 0.55 });
       const ring1 = new THREE.Mesh(ring1Geo, ring1Mat);
@@ -1102,7 +1255,6 @@
       );
       ring2.add(node2);
 
-      // 4) Undulating 3D Neural Particle Wave Field
       const cols = 38, rows = 24;
       const waveCount = cols * rows;
       const waveGeo = new THREE.BufferGeometry();
@@ -1126,7 +1278,6 @@
       const wavePoints = new THREE.Points(waveGeo, waveMat);
       scene.add(wavePoints);
 
-      // Dynamic Studio Rim Lighting (Electric Blue, Indigo, Cyan)
       const lightBlue = new THREE.PointLight(0x38BDF8, 5.5, 22);
       lightBlue.position.set(4.5, 3.5, 4.5);
       scene.add(lightBlue);
@@ -1162,7 +1313,6 @@
         requestAnimationFrame(animate);
         const t = clock.getElapsedTime();
 
-        // Morph liquid-crystal core vertices
         for (let i = 0; i < posAttr.count; i++) {
           const ix = i * 3;
           const ox = origPos[ix];
@@ -1184,14 +1334,12 @@
         shellMesh.rotation.y -= 0.0025;
         shellMesh.rotation.x += 0.0015;
 
-        // Orbiting ring nodes
         ring1.rotation.z += 0.004;
         node1.position.set(Math.cos(t * 1.2) * 2.15, Math.sin(t * 1.2) * 2.15, 0);
 
         ring2.rotation.z -= 0.003;
         node2.position.set(Math.cos(-t * 0.9) * 2.48, Math.sin(-t * 0.9) * 2.48, 0);
 
-        // Undulating 3D particle wave
         const wAttr = waveGeo.attributes.position;
         let wIdx = 0;
         for (let x = 0; x < cols; x++) {
@@ -1204,7 +1352,6 @@
         }
         wAttr.needsUpdate = true;
 
-        // Smooth cursor parallax
         group.rotation.y += (mouseX * 0.45 - group.rotation.y) * 0.05;
         group.rotation.x += (mouseY * 0.32 - group.rotation.x) * 0.05;
 
@@ -1231,15 +1378,15 @@
       },
       {
         id: 'sample-2',
-        title: 'LLM Workflow & n8n Automated Web Platform',
-        category: 'AI Automation • Web Design',
+        title: 'WhatsApp Automation, CRM & n8n Platform',
+        category: 'AI Automation • CRM / ERP',
         year: '2026',
         metric: 'RAG + n8n Orchestration',
         url: '',
         img: '',
-        tools: ['n8n', 'LangChain', 'RAG', 'Claude', 'API Integration'],
-        summary: 'Editorial web experience integrated with LLM-powered workflows, RAG search, and automated n8n client onboarding.',
-        details: 'Built to demonstrate end-to-end AI web engineering: prompt-crafted UX, LangChain/RAG knowledge assistant, and n8n API orchestration.'
+        tools: ['n8n', 'WhatsApp API', 'LangChain', 'RAG', 'Claude'],
+        summary: 'Automated lead capture via WhatsApp connected seamlessly to CRM pipelines, ERP inventory updates, and RAG knowledge assistants.',
+        details: 'Built to demonstrate end-to-end AI engineering: prompt-crafted UX, LangChain/RAG assistant, and n8n API orchestration across WhatsApp and CRM.'
       }
     ];
 
@@ -1399,8 +1546,8 @@
       profile: {
         title: 'AI Web Designer & Automation Specialist',
         location: 'Hyderabad, Telangana • India (IST)',
-        bio: 'I help founders, tech startups, and modern brands build unforgettable digital flagships using an AI-native design and automation pipeline—combining generative art direction, 3D WebGL, RAG/LLM integrations, and n8n workflow orchestration.',
-        skills: ['AI Web Design', 'Prompt Engineering', 'LangChain & RAG', 'n8n Automation', '3D WebGL / Spline', 'API Integration'],
+        bio: 'I help founders, tech startups, and modern brands build unforgettable digital flagships and automated operations—combining AI web design, 3D WebGL, WhatsApp automation, CRM/ERP systems, AI video creation, and data analysis.',
+        skills: ['AI Web Design', 'WhatsApp Automation', 'CRM & ERP', 'AI Video Creation', 'Data Analysis', 'n8n & LangChain', 'Prompt Engineering'],
         resumeUrl: '',
         resumeDataUrl: '',
         resumeFileName: ''
@@ -1411,21 +1558,21 @@
           period: 'Current Focus',
           role: 'Principal AI Web Designer & Automation Architect',
           company: 'Independent Practice • Hyderabad',
-          desc: 'Architecting AI-powered web experiences, interactive 3D landing pages, and LLM-powered workflows using ChatGPT, Claude, Gemini, Cursor, LangChain, RAG, and n8n automation.'
+          desc: 'Architecting AI-powered 3D websites, WhatsApp automation bots, CRM/ERP pipelines, and LLM-powered workflows using ChatGPT, Claude, Gemini, Cursor, LangChain, RAG, and n8n.'
         },
         {
           id: 'res-2',
-          period: 'Core Specialty',
-          role: 'Generative Brand, 3D & Prompt Engineering',
-          company: 'AI Visual & Knowledge Systems',
-          desc: 'Designing cohesive visual identities, custom 3D hero scenes, and Retrieval-Augmented Generation (RAG) web experiences tailored to SaaS, AI startups, and modern brands.'
+          period: 'Creative & Data',
+          role: 'AI Video Creation, 3D Art Direction & Data Analysis',
+          company: 'Brand & Business Intelligence',
+          desc: 'Producing generative AI video ads, custom 3D hero scenes, Retrieval-Augmented Generation (RAG) web assistants, and executive KPI data dashboards.'
         },
         {
           id: 'res-3',
           period: 'Delivery Stack',
           role: 'AI-Assisted Development & API Integration',
           company: 'Production & Orchestration',
-          desc: 'Shipping pixel-accurate builds via Cursor, GitHub Copilot, Three.js, Framer, and Webflow connected with n8n workflow automation and custom API integrations.'
+          desc: 'Shipping pixel-accurate builds via Cursor, GitHub Copilot, Three.js, Framer, and Webflow connected with n8n workflow automation, WhatsApp APIs, and CRM/ERP backends.'
         }
       ]
     };
@@ -1669,8 +1816,8 @@
       const scope = document.getElementById('cType').value;
       const msg = document.getElementById('cMsg').value.trim();
 
-      const subject = encodeURIComponent(`AI Web Design Inquiry: ${scope} — from ${name}`);
-      const body = encodeURIComponent(`Name: ${name}\nClient Email: ${email}\nProject Type: ${scope}\n\nDetails:\n${msg}`);
+      const subject = encodeURIComponent(`Project Inquiry: ${scope} — from ${name}`);
+      const body = encodeURIComponent(`Name: ${name}\nClient Email: ${email}\nService Requested: ${scope}\n\nDetails:\n${msg}`);
 
       document.getElementById('cStatus').style.display = 'block';
       window.location.href = `mailto:gundimedapraveen@gmail.com?subject=${subject}&body=${body}`;
