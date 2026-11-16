@@ -4,9 +4,9 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Praveen Kumar Gundimeda — AI Web Designer | Hyderabad</title>
-  <meta name="description" content="Praveen Kumar Gundimeda — AI Web Designer in Hyderabad crafting 3D WebGL experiences, AI-powered websites, and high-converting digital flagships." />
+  <meta name="description" content="Praveen Kumar Gundimeda — AI Web Designer in Hyderabad crafting 3D WebGL experiences, AI-powered websites, LLM workflows, and high-converting digital flagships." />
   <meta property="og:title" content="Praveen Kumar Gundimeda — AI Web Designer" />
-  <meta property="og:description" content="100% AI-powered Web Design & 3D Digital Experiences from Hyderabad. View portfolio, AI tool stack, and resume." />
+  <meta property="og:description" content="100% AI-powered Web Design, AI Automation & 3D Digital Experiences from Hyderabad. View portfolio, AI tool stack, and resume." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://gundimedapraveen-dotcom.github.io/" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -23,7 +23,8 @@
       --border: rgba(255, 255, 255, 0.1);
       --accent: #38BDF8;
       --accent-2: #818CF8;
-      --accent-glow: rgba(56, 189, 248, 0.25);
+      --accent-3: #22D3EE;
+      --accent-glow: rgba(56, 189, 248, 0.28);
       --radius: 16px;
       --max-w: 1200px;
     }
@@ -46,16 +47,16 @@
     /* Ambient Background Glows */
     .bg-glow {
       position: fixed;
-      width: 520px;
-      height: 520px;
+      width: 560px;
+      height: 560px;
       border-radius: 50%;
-      filter: blur(130px);
+      filter: blur(140px);
       opacity: 0.18;
       pointer-events: none;
       z-index: 0;
     }
-    .glow-1 { top: -120px; left: -100px; background: var(--accent); }
-    .glow-2 { bottom: -160px; right: -100px; background: var(--accent-2); }
+    .glow-1 { top: -140px; left: -120px; background: var(--accent); }
+    .glow-2 { bottom: -160px; right: -120px; background: var(--accent-2); }
 
     /* Header */
     header {
@@ -112,7 +113,7 @@
       background: #22C55E;
       box-shadow: 0 0 10px #22C55E;
     }
-    nav { display: flex; align-items: center; gap: 18px; }
+    nav { display: flex; align-items: center; gap: 20px; }
     nav a {
       text-decoration: none;
       color: var(--muted);
@@ -177,7 +178,7 @@
       opacity: 0;
       pointer-events: none;
       transition: all 0.25s ease;
-      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.5);
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.55);
     }
     .toast.show {
       opacity: 1;
@@ -270,10 +271,10 @@
     .section-head h2 { font-size: clamp(2rem, 4vw, 3rem); line-height: 1.1; margin-top: 8px; }
     .section-desc { max-width: 440px; color: var(--muted); font-size: 0.96rem; }
 
-    /* AI Tools Section */
+    /* AI Tools Section (2x2 Grid) */
     .ai-categories {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(2, 1fr);
       gap: 22px;
     }
     .ai-box {
@@ -294,7 +295,7 @@
       justify-content: space-between;
       margin-bottom: 18px;
     }
-    .ai-box h3 { font-size: 1.2rem; }
+    .ai-box h3 { font-size: 1.25rem; }
     .tool-chips { display: flex; flex-wrap: wrap; gap: 9px; margin-bottom: 18px; }
     .tool-chip {
       display: inline-flex;
@@ -574,7 +575,8 @@
         <a href="#ai-stack" class="hide-sm">AI Stack</a>
         <a href="#work" class="hide-sm">Projects</a>
         <a href="#resume" class="hide-sm">Profile & Resume</a>
-        <button class="btn btn-outline btn-sm" id="studioToggleBtn" onclick="toggleStudioMode()">⚙ Studio</button>
+        <!-- Hidden from public visitors; visible only when Studio Mode is unlocked via ?studio=1 or Ctrl+Shift+E -->
+        <button class="btn btn-outline btn-sm creator-only btn-studio-active" id="studioToggleBtn" onclick="toggleStudioMode()">✓ Exit Studio</button>
         <a href="#contact" class="btn btn-primary btn-sm">Hire Me</a>
       </nav>
     </div>
@@ -589,7 +591,7 @@
           <div class="hero-tag mono">✦ AI-First Web Designer • Hyderabad</div>
           <h1><span class="gradient-text">Praveen Kumar Gundimeda</span></h1>
           <p class="hero-lead">
-            I specialize exclusively in <strong>AI-Powered Web Design & 3D Digital Experiences</strong>—combining generative art direction, spatial 3D interfaces, and AI-accelerated engineering to launch high-converting websites in days, not months.
+            I specialize exclusively in <strong>AI-Powered Web Design, LLM Workflows & 3D Digital Experiences</strong>—combining generative art direction, n8n automation orchestration, and AI-assisted development to launch high-converting websites in days.
           </p>
           <div class="hero-actions">
             <a href="#work" class="btn btn-primary">Explore Selected Work</a>
@@ -620,17 +622,51 @@
       <div class="container">
         <div class="section-head">
           <div>
-            <span class="mono" style="color:var(--accent);">AI Web Design Ecosystem</span>
-            <h2>Tools powering every pixel & interaction.</h2>
+            <span class="mono" style="color:var(--accent);">AI Web Design & Automation Ecosystem</span>
+            <h2>Tools powering every pixel & workflow.</h2>
           </div>
-          <p class="section-desc">My practice is built purely around modern AI web design—leveraging best-in-class AI platforms for architecture, 3D visuals, and clean production code.</p>
+          <p class="section-desc">My practice combines modern AI web design, generative AI engineering, and intelligent workflow automation for end-to-end digital experiences.</p>
         </div>
 
         <div class="ai-categories">
           <div class="ai-box">
             <div class="ai-box-title">
-              <h3>AI UI/UX & Site Builders</h3>
+              <h3>AI & Generative AI</h3>
               <span class="mono" style="color:var(--accent);">01</span>
+            </div>
+            <div class="tool-chips">
+              <span class="tool-chip"><span>●</span> ChatGPT</span>
+              <span class="tool-chip"><span>●</span> Claude</span>
+              <span class="tool-chip"><span>●</span> Gemini</span>
+              <span class="tool-chip"><span>●</span> Cursor</span>
+              <span class="tool-chip"><span>●</span> GitHub Copilot</span>
+              <span class="tool-chip"><span>●</span> LangChain</span>
+              <span class="tool-chip"><span>●</span> Retrieval-Augmented Generation (RAG)</span>
+              <span class="tool-chip"><span>●</span> Prompt Engineering</span>
+            </div>
+            <p>Precision prompt engineering, RAG-powered site intelligence, LLM integrations, and rapid AI-assisted front-end engineering.</p>
+          </div>
+
+          <div class="ai-box">
+            <div class="ai-box-title">
+              <h3>AI Automation & Workflow</h3>
+              <span class="mono" style="color:var(--accent);">02</span>
+            </div>
+            <div class="tool-chips">
+              <span class="tool-chip"><span>●</span> n8n</span>
+              <span class="tool-chip"><span>●</span> AI workflow automation</span>
+              <span class="tool-chip"><span>●</span> LLM-powered workflows</span>
+              <span class="tool-chip"><span>●</span> API integration</span>
+              <span class="tool-chip"><span>●</span> automation orchestration</span>
+              <span class="tool-chip"><span>●</span> AI-assisted development</span>
+            </div>
+            <p>Connecting sleek web interfaces to n8n pipelines, automated lead routing, custom API integrations, and intelligent LLM orchestration.</p>
+          </div>
+
+          <div class="ai-box">
+            <div class="ai-box-title">
+              <h3>AI UI/UX & Site Builders</h3>
+              <span class="mono" style="color:var(--accent);">03</span>
             </div>
             <div class="tool-chips">
               <span class="tool-chip"><span>●</span> Relume AI</span>
@@ -646,7 +682,7 @@
           <div class="ai-box">
             <div class="ai-box-title">
               <h3>AI 3D, Visuals & Motion</h3>
-              <span class="mono" style="color:var(--accent);">02</span>
+              <span class="mono" style="color:var(--accent);">04</span>
             </div>
             <div class="tool-chips">
               <span class="tool-chip"><span>●</span> Spline AI (3D)</span>
@@ -654,25 +690,9 @@
               <span class="tool-chip"><span>●</span> Runway Gen-3</span>
               <span class="tool-chip"><span>●</span> Luma Dream Machine</span>
               <span class="tool-chip"><span>●</span> Adobe Firefly</span>
-              <span class="tool-chip"><span>●</span> Meshy AI 3D</span>
+              <span class="tool-chip"><span>●</span> Three.js + WebGL</span>
             </div>
             <p>Bespoke 3D hero assets, consistent brand imagery, generative textures, and seamless motion loops without stock clichés.</p>
-          </div>
-
-          <div class="ai-box">
-            <div class="ai-box-title">
-              <h3>AI Code & Strategy</h3>
-              <span class="mono" style="color:var(--accent);">03</span>
-            </div>
-            <div class="tool-chips">
-              <span class="tool-chip"><span>●</span> Cursor AI IDE</span>
-              <span class="tool-chip"><span>●</span> Claude</span>
-              <span class="tool-chip"><span>●</span> ChatGPT</span>
-              <span class="tool-chip"><span>●</span> Windsurf</span>
-              <span class="tool-chip"><span>●</span> Perplexity Pro</span>
-              <span class="tool-chip"><span>●</span> Three.js + GSAP</span>
-            </div>
-            <p>AI-assisted conversion copywriting, SEO structuring, custom WebGL shaders, and clean, production-grade front-end code.</p>
           </div>
         </div>
       </div>
@@ -728,9 +748,9 @@
             <p>Custom 3D scenes, Spline objects, and tactile micro-interactions that immediately differentiate your brand.</p>
           </div>
           <div class="pillar">
-            <span class="mono pillar-num">03 / Originality</span>
-            <h3>Zero Stock Templates</h3>
-            <p>Every visual, icon system, and layout is art-directed specifically for your audience using Midjourney & Firefly.</p>
+            <span class="mono pillar-num">03 / Automation</span>
+            <h3>Smart AI Workflows</h3>
+            <p>Sites wired with n8n automation, API integrations, and LLM/RAG capabilities to capture and qualify leads effortlessly.</p>
           </div>
           <div class="pillar">
             <span class="mono pillar-num">04 / Performance</span>
@@ -802,8 +822,8 @@
             <label for="cType">What do you need?</label>
             <select id="cType">
               <option>AI-Designed 3D Landing Page</option>
+              <option>AI Website + n8n Workflow Automation</option>
               <option>Full Company / Startup Website</option>
-              <option>AI Rebrand + Visual System</option>
               <option>Personal Brand Portfolio</option>
             </select>
           </div>
@@ -866,7 +886,7 @@
         </div>
         <div class="field">
           <label>AI Tools Used (comma separated) *</label>
-          <input id="pTools" required placeholder="Framer AI, Midjourney, Spline 3D, Cursor" />
+          <input id="pTools" required placeholder="ChatGPT, Claude, n8n, Cursor, Spline 3D" />
         </div>
         <div class="field">
           <label>Short Summary *</label>
@@ -970,16 +990,11 @@
     document.getElementById('year').textContent = new Date().getFullYear();
 
     function setStudioState(isStudio, showToastMsg = false) {
-      const btn = document.getElementById('studioToggleBtn');
       if (isStudio) {
         document.body.classList.remove('client-preview');
-        btn.textContent = '✓ Client View';
-        btn.classList.add('btn-studio-active');
         if (showToastMsg) showToast('Studio Mode ON — Add/Edit options unlocked in Projects & Resume');
       } else {
         document.body.classList.add('client-preview');
-        btn.textContent = '⚙ Studio';
-        btn.classList.remove('btn-studio-active');
         if (showToastMsg) showToast('Client Preview Mode ON');
       }
     }
@@ -993,13 +1008,19 @@
       const el = document.getElementById('studioToast');
       el.textContent = msg;
       el.classList.add('show');
-      setTimeout(() => el.classList.remove('show'), 2800);
+      setTimeout(() => el.classList.remove('show'), 3000);
     }
 
-    // Also auto-enable if ?studio=1 is in the URL
+    // Unlock Studio Mode via ?studio=1 OR Ctrl+Shift+E / Cmd+Shift+E
     if (new URLSearchParams(window.location.search).get('studio') === '1') {
       setStudioState(true, false);
     }
+    window.addEventListener('keydown', (e) => {
+      if ((e.ctrlKey || e.metaKey) && e.shiftKey && e.key.toLowerCase() === 'e') {
+        e.preventDefault();
+        toggleStudioMode();
+      }
+    });
 
     function escapeHtml(str) {
       return String(str || '')
@@ -1010,63 +1031,115 @@
         .replace(/'/g, '&#39;');
     }
 
-    /* ---------- 1. THREE.JS 3D INTERACTIVE HERO ---------- */
+    /* ---------- 1. LATEST 2026 LIQUID-CRYSTAL 3D INTERACTIVE SCENE (BLUE THEME) ---------- */
     (function init3D() {
       const canvas = document.getElementById('hero-3d');
       if (!window.THREE || !canvas) return;
 
       const scene = new THREE.Scene();
-      const camera = new THREE.PerspectiveCamera(55, canvas.clientWidth / canvas.clientHeight, 0.1, 1000);
-      camera.position.z = 5.5;
+      const camera = new THREE.PerspectiveCamera(52, canvas.clientWidth / canvas.clientHeight, 0.1, 1000);
+      camera.position.z = 6.2;
 
       const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
       renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
       renderer.setSize(canvas.clientWidth, canvas.clientHeight);
 
       const group = new THREE.Group();
-      group.position.x = window.innerWidth > 900 ? 1.85 : 0;
-      group.position.y = window.innerWidth > 900 ? 0 : -0.4;
+      group.position.x = window.innerWidth > 900 ? 1.95 : 0;
+      group.position.y = window.innerWidth > 900 ? 0.15 : -0.35;
       scene.add(group);
 
-      const geo1 = new THREE.IcosahedronGeometry(1.75, 1);
-      const mat1 = new THREE.MeshBasicMaterial({
+      // 1) Liquid-Crystal Morphing AI Core
+      const coreGeo = new THREE.IcosahedronGeometry(1.38, 4);
+      const posAttr = coreGeo.attributes.position;
+      const origPos = new Float32Array(posAttr.array.length);
+      origPos.set(posAttr.array);
+
+      const coreMat = new THREE.MeshStandardMaterial({
+        color: 0x0F172A,
+        metalness: 0.9,
+        roughness: 0.16,
+        flatShading: true
+      });
+      const coreMesh = new THREE.Mesh(coreGeo, coreMat);
+      group.add(coreMesh);
+
+      // 2) Glowing Neural Wireframe Halo
+      const shellGeo = new THREE.IcosahedronGeometry(1.62, 2);
+      const shellMat = new THREE.MeshBasicMaterial({
         color: 0x38BDF8,
         wireframe: true,
         transparent: true,
-        opacity: 0.42
+        opacity: 0.28
       });
-      const mesh1 = new THREE.Mesh(geo1, mat1);
-      group.add(mesh1);
+      const shellMesh = new THREE.Mesh(shellGeo, shellMat);
+      group.add(shellMesh);
 
-      const geo2 = new THREE.TorusKnotGeometry(0.9, 0.28, 110, 16);
-      const mat2 = new THREE.MeshStandardMaterial({
-        color: 0x818CF8,
-        metalness: 0.75,
-        roughness: 0.2
-      });
-      const mesh2 = new THREE.Mesh(geo2, mat2);
-      group.add(mesh2);
+      // 3) Precision Orbital Gyro Rings + Accent Nodes
+      const ring1Geo = new THREE.TorusGeometry(2.15, 0.012, 16, 120);
+      const ring1Mat = new THREE.MeshBasicMaterial({ color: 0x818CF8, transparent: true, opacity: 0.55 });
+      const ring1 = new THREE.Mesh(ring1Geo, ring1Mat);
+      ring1.rotation.x = Math.PI * 0.36;
+      ring1.rotation.y = Math.PI * 0.14;
+      group.add(ring1);
 
-      const pCount = 450;
-      const pGeo = new THREE.BufferGeometry();
-      const pPos = new Float32Array(pCount * 3);
-      for (let i = 0; i < pCount * 3; i++) {
-        pPos[i] = (Math.random() - 0.5) * 10;
+      const node1 = new THREE.Mesh(
+        new THREE.SphereGeometry(0.06, 16, 16),
+        new THREE.MeshBasicMaterial({ color: 0x22D3EE })
+      );
+      ring1.add(node1);
+
+      const ring2Geo = new THREE.TorusGeometry(2.48, 0.009, 16, 120);
+      const ring2Mat = new THREE.MeshBasicMaterial({ color: 0x38BDF8, transparent: true, opacity: 0.4 });
+      const ring2 = new THREE.Mesh(ring2Geo, ring2Mat);
+      ring2.rotation.x = -Math.PI * 0.28;
+      ring2.rotation.y = Math.PI * 0.35;
+      group.add(ring2);
+
+      const node2 = new THREE.Mesh(
+        new THREE.SphereGeometry(0.05, 16, 16),
+        new THREE.MeshBasicMaterial({ color: 0x38BDF8 })
+      );
+      ring2.add(node2);
+
+      // 4) Undulating 3D Neural Particle Wave Field
+      const cols = 38, rows = 24;
+      const waveCount = cols * rows;
+      const waveGeo = new THREE.BufferGeometry();
+      const wavePos = new Float32Array(waveCount * 3);
+      let idx = 0;
+      for (let x = 0; x < cols; x++) {
+        for (let z = 0; z < rows; z++) {
+          wavePos[idx * 3] = (x - cols / 2) * 0.36;
+          wavePos[idx * 3 + 1] = -2.1;
+          wavePos[idx * 3 + 2] = (z - rows / 2) * 0.36 - 1.5;
+          idx++;
+        }
       }
-      pGeo.setAttribute('position', new THREE.BufferAttribute(pPos, 3));
-      const pMat = new THREE.PointsMaterial({ color: 0x38BDF8, size: 0.035, transparent: true, opacity: 0.65 });
-      const particles = new THREE.Points(pGeo, pMat);
-      scene.add(particles);
+      waveGeo.setAttribute('position', new THREE.BufferAttribute(wavePos, 3));
+      const waveMat = new THREE.PointsMaterial({
+        color: 0x38BDF8,
+        size: 0.038,
+        transparent: true,
+        opacity: 0.52
+      });
+      const wavePoints = new THREE.Points(waveGeo, waveMat);
+      scene.add(wavePoints);
 
-      const light1 = new THREE.PointLight(0x38BDF8, 3, 20);
-      light1.position.set(4, 4, 5);
-      scene.add(light1);
+      // Dynamic Studio Rim Lighting (Electric Blue, Indigo, Cyan)
+      const lightBlue = new THREE.PointLight(0x38BDF8, 5.5, 22);
+      lightBlue.position.set(4.5, 3.5, 4.5);
+      scene.add(lightBlue);
 
-      const light2 = new THREE.PointLight(0x818CF8, 3, 20);
-      light2.position.set(-4, -3, 4);
-      scene.add(light2);
+      const lightIndigo = new THREE.PointLight(0x818CF8, 5, 22);
+      lightIndigo.position.set(-4.5, -3, 4);
+      scene.add(lightIndigo);
 
-      scene.add(new THREE.AmbientLight(0xffffff, 0.4));
+      const lightCyan = new THREE.PointLight(0x22D3EE, 3, 18);
+      lightCyan.position.set(0, 4.5, -2);
+      scene.add(lightCyan);
+
+      scene.add(new THREE.AmbientLight(0xffffff, 0.35));
 
       let mouseX = 0, mouseY = 0;
       window.addEventListener('mousemove', (e) => {
@@ -1080,19 +1153,60 @@
         camera.aspect = w / h;
         camera.updateProjectionMatrix();
         renderer.setSize(w, h);
-        group.position.x = window.innerWidth > 900 ? 1.85 : 0;
+        group.position.x = window.innerWidth > 900 ? 1.95 : 0;
       });
+
+      const clock = new THREE.Clock();
 
       function animate() {
         requestAnimationFrame(animate);
-        mesh1.rotation.y += 0.003;
-        mesh1.rotation.x += 0.002;
-        mesh2.rotation.y -= 0.006;
-        mesh2.rotation.z += 0.004;
-        particles.rotation.y += 0.0008;
+        const t = clock.getElapsedTime();
 
+        // Morph liquid-crystal core vertices
+        for (let i = 0; i < posAttr.count; i++) {
+          const ix = i * 3;
+          const ox = origPos[ix];
+          const oy = origPos[ix + 1];
+          const oz = origPos[ix + 2];
+          const ripple =
+            Math.sin(ox * 2.3 + t * 1.5) * 0.1 +
+            Math.cos(oy * 2.7 - t * 1.2) * 0.1 +
+            Math.sin(oz * 3.0 + t * 1.7) * 0.08;
+          const s = 1 + ripple;
+          posAttr.array[ix] = ox * s;
+          posAttr.array[ix + 1] = oy * s;
+          posAttr.array[ix + 2] = oz * s;
+        }
+        posAttr.needsUpdate = true;
+        coreGeo.computeVertexNormals();
+
+        coreMesh.rotation.y += 0.003;
+        shellMesh.rotation.y -= 0.0025;
+        shellMesh.rotation.x += 0.0015;
+
+        // Orbiting ring nodes
+        ring1.rotation.z += 0.004;
+        node1.position.set(Math.cos(t * 1.2) * 2.15, Math.sin(t * 1.2) * 2.15, 0);
+
+        ring2.rotation.z -= 0.003;
+        node2.position.set(Math.cos(-t * 0.9) * 2.48, Math.sin(-t * 0.9) * 2.48, 0);
+
+        // Undulating 3D particle wave
+        const wAttr = waveGeo.attributes.position;
+        let wIdx = 0;
+        for (let x = 0; x < cols; x++) {
+          for (let z = 0; z < rows; z++) {
+            const wx = wAttr.array[wIdx * 3];
+            const wz = wAttr.array[wIdx * 3 + 2];
+            wAttr.array[wIdx * 3 + 1] = -2.15 + Math.sin(wx * 0.55 + t * 1.3) * 0.25 + Math.cos(wz * 0.55 + t * 1.1) * 0.22;
+            wIdx++;
+          }
+        }
+        wAttr.needsUpdate = true;
+
+        // Smooth cursor parallax
         group.rotation.y += (mouseX * 0.45 - group.rotation.y) * 0.05;
-        group.rotation.x += (mouseY * 0.35 - group.rotation.x) * 0.05;
+        group.rotation.x += (mouseY * 0.32 - group.rotation.x) * 0.05;
 
         renderer.render(scene, camera);
       }
@@ -1112,20 +1226,20 @@
         url: '',
         img: '',
         tools: ['Spline 3D', 'Framer AI', 'Midjourney', 'Cursor'],
-        summary: 'Interactive 3D hero showcase combined with an AI-structured conversion narrative (click ⚙ Studio in the top bar to edit).',
+        summary: 'Interactive 3D hero showcase combined with an AI-structured conversion narrative (sample slot—update anytime via ?studio=1).',
         details: 'Designed with an AI-first pipeline: Relume AI sitemap architecture, Midjourney custom 3D renders, Spline interactive hero scene, and Cursor-accelerated front-end code.'
       },
       {
         id: 'sample-2',
-        title: 'Generative Luxury Brand Concept',
-        category: 'Generative E-Commerce',
+        title: 'LLM Workflow & n8n Automated Web Platform',
+        category: 'AI Automation • Web Design',
         year: '2026',
-        metric: 'AI Art Direction',
+        metric: 'RAG + n8n Orchestration',
         url: '',
         img: '',
-        tools: ['Relume AI', 'Runway Gen-3', 'Webflow AI', 'Claude'],
-        summary: 'Editorial luxury storefront demonstrating rapid 10-day turnaround from generative concept to production launch.',
-        details: 'Built to showcase seamless motion storytelling, prompt-crafted brand imagery, and responsive mobile conversion UX.'
+        tools: ['n8n', 'LangChain', 'RAG', 'Claude', 'API Integration'],
+        summary: 'Editorial web experience integrated with LLM-powered workflows, RAG search, and automated n8n client onboarding.',
+        details: 'Built to demonstrate end-to-end AI web engineering: prompt-crafted UX, LangChain/RAG knowledge assistant, and n8n API orchestration.'
       }
     ];
 
@@ -1149,8 +1263,8 @@
       const gradients = [
         'linear-gradient(135deg, #0F172A, #1E3A8A)',
         'linear-gradient(135deg, #1E1B4B, #312E81)',
-        'linear-gradient(135deg, #042F2E, #0F766E)',
-        'linear-gradient(135deg, #2E1065, #4C1D95)'
+        'linear-gradient(135deg, #082F49, #0369A1)',
+        'linear-gradient(135deg, #0F172A, #1D4ED8)'
       ];
 
       if (!projects.length) {
@@ -1283,10 +1397,10 @@
 
     const defaultResumeData = {
       profile: {
-        title: 'AI Web Designer & 3D Specialist',
+        title: 'AI Web Designer & Automation Specialist',
         location: 'Hyderabad, Telangana • India (IST)',
-        bio: 'I help founders, tech startups, and modern brands build unforgettable digital flagships using an AI-native design pipeline. By merging human design taste with cutting-edge AI tools, I deliver elevated aesthetics, clear storytelling, and rapid execution.',
-        skills: ['AI Web Design', '3D WebGL / Spline', 'Framer & Webflow', 'Prompt Art Direction', 'Conversion UX'],
+        bio: 'I help founders, tech startups, and modern brands build unforgettable digital flagships using an AI-native design and automation pipeline—combining generative art direction, 3D WebGL, RAG/LLM integrations, and n8n workflow orchestration.',
+        skills: ['AI Web Design', 'Prompt Engineering', 'LangChain & RAG', 'n8n Automation', '3D WebGL / Spline', 'API Integration'],
         resumeUrl: '',
         resumeDataUrl: '',
         resumeFileName: ''
@@ -1295,23 +1409,23 @@
         {
           id: 'res-1',
           period: 'Current Focus',
-          role: 'Principal AI Web Designer',
+          role: 'Principal AI Web Designer & Automation Architect',
           company: 'Independent Practice • Hyderabad',
-          desc: 'Architecting AI-powered web experiences, interactive 3D landing pages, and conversion-focused brand sites using Relume, Framer AI, Midjourney, Spline, and Cursor.'
+          desc: 'Architecting AI-powered web experiences, interactive 3D landing pages, and LLM-powered workflows using ChatGPT, Claude, Gemini, Cursor, LangChain, RAG, and n8n automation.'
         },
         {
           id: 'res-2',
           period: 'Core Specialty',
-          role: 'Generative Brand & 3D Art Direction',
-          company: 'AI Visual Systems',
-          desc: 'Creating cohesive visual identities, custom 3D hero scenes, and generative motion assets tailored to SaaS, AI startups, and luxury D2C brands.'
+          role: 'Generative Brand, 3D & Prompt Engineering',
+          company: 'AI Visual & Knowledge Systems',
+          desc: 'Designing cohesive visual identities, custom 3D hero scenes, and Retrieval-Augmented Generation (RAG) web experiences tailored to SaaS, AI startups, and modern brands.'
         },
         {
           id: 'res-3',
           period: 'Delivery Stack',
-          role: 'Front-End & No-Code Deployment',
-          company: 'Production & Handoff',
-          desc: 'Shipping pixel-accurate builds via HTML/CSS/Three.js, React/v0, Framer, and Webflow with full SEO, Core Web Vitals optimization, and responsive QA.'
+          role: 'AI-Assisted Development & API Integration',
+          company: 'Production & Orchestration',
+          desc: 'Shipping pixel-accurate builds via Cursor, GitHub Copilot, Three.js, Framer, and Webflow connected with n8n workflow automation and custom API integrations.'
         }
       ]
     };
