@@ -112,7 +112,7 @@
       background: #22C55E;
       box-shadow: 0 0 10px #22C55E;
     }
-    nav { display: flex; align-items: center; gap: 24px; }
+    nav { display: flex; align-items: center; gap: 18px; }
     nav a {
       text-decoration: none;
       color: var(--muted);
@@ -155,6 +155,34 @@
       background: rgba(56, 189, 248, 0.08);
     }
     .btn-sm { padding: 7px 14px; font-size: 0.8rem; }
+    .btn-studio-active {
+      border-color: var(--accent);
+      background: rgba(56, 189, 248, 0.16);
+      color: var(--accent);
+    }
+
+    /* Toast notification */
+    .toast {
+      position: fixed;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%) translateY(20px);
+      background: #0F172A;
+      border: 1px solid var(--accent);
+      color: var(--ink);
+      padding: 12px 20px;
+      border-radius: 999px;
+      font-size: 0.88rem;
+      z-index: 200;
+      opacity: 0;
+      pointer-events: none;
+      transition: all 0.25s ease;
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.5);
+    }
+    .toast.show {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
 
     /* Hero with 3D Canvas */
     .hero {
@@ -289,9 +317,9 @@
       align-items: center;
       justify-content: space-between;
       gap: 14px;
-      padding: 14px 18px;
-      background: rgba(56, 189, 248, 0.06);
-      border: 1px solid rgba(56, 189, 248, 0.22);
+      padding: 16px 20px;
+      background: rgba(56, 189, 248, 0.08);
+      border: 1px solid rgba(56, 189, 248, 0.35);
       border-radius: 14px;
       margin-bottom: 28px;
     }
@@ -522,7 +550,7 @@
 
     @media print {
       body { background: #fff; color: #000; }
-      #hero-3d, header, .studio-bar, .creator-only, #contact, .drag-hint { display: none !important; }
+      #hero-3d, header, .studio-bar, .creator-only, #contact, .drag-hint, .toast { display: none !important; }
       .bg-glow { display: none; }
       .profile-card, .pillar, .ai-box { border: 1px solid #ccc; background: #fff; color: #000; }
       .gradient-text { -webkit-text-fill-color: #000; color: #000; }
@@ -533,6 +561,7 @@
 
   <div class="bg-glow glow-1"></div>
   <div class="bg-glow glow-2"></div>
+  <div class="toast" id="studioToast">Studio Mode Enabled</div>
 
   <header>
     <div class="container nav-inner">
@@ -545,7 +574,7 @@
         <a href="#ai-stack" class="hide-sm">AI Stack</a>
         <a href="#work" class="hide-sm">Projects</a>
         <a href="#resume" class="hide-sm">Profile & Resume</a>
-        <button class="btn btn-outline btn-sm creator-only" id="previewToggleBtn" onclick="toggleClientPreview()">Exit Studio</button>
+        <button class="btn btn-outline btn-sm" id="studioToggleBtn" onclick="toggleStudioMode()">⚙ Studio</button>
         <a href="#contact" class="btn btn-primary btn-sm">Hire Me</a>
       </nav>
     </div>
@@ -660,11 +689,10 @@
           <p class="section-desc">Explore how AI design architecture, 3D interactivity, and sharp visual hierarchy come together for client websites.</p>
         </div>
 
-        <!-- Hidden from public visitors; visible at ?studio=1 -->
         <div class="studio-bar">
           <div>
-            <strong style="font-size:0.95rem;">Real-Time Project Studio (?studio=1)</strong>
-            <div style="font-size:0.82rem; color:var(--muted);">Add/edit projects here, then click Export JSON to paste into defaultProjects in index.html.</div>
+            <strong style="font-size:0.95rem;">Real-Time Project Studio</strong>
+            <div style="font-size:0.82rem; color:var(--muted);">Add/edit projects here, then click Export Projects JSON to back up or update defaultProjects.</div>
           </div>
           <div class="studio-actions">
             <button class="btn btn-primary btn-sm" onclick="openProjectForm()">+ Add New Project</button>
@@ -724,15 +752,14 @@
           <div class="resume-actions-row" id="resumeDownloadActions"></div>
         </div>
 
-        <!-- Hidden from public visitors; visible at ?studio=1 -->
         <div class="studio-bar">
           <div>
-            <strong style="font-size:0.95rem;">Real-Time Resume & Profile Studio (?studio=1)</strong>
-            <div style="font-size:0.82rem; color:var(--muted);">Update your profile bio, attach a Resume PDF, or add/edit experience & education entries below.</div>
+            <strong style="font-size:0.95rem;">Real-Time Resume & Profile Studio</strong>
+            <div style="font-size:0.82rem; color:var(--muted);">Add/edit work history, update your bio/skills, or attach your Resume PDF here.</div>
           </div>
           <div class="studio-actions">
             <button class="btn btn-primary btn-sm" onclick="openResumeForm()">+ Add Experience / Education</button>
-            <button class="btn btn-outline btn-sm" onclick="openProfileForm()">Edit Profile & PDF</button>
+            <button class="btn btn-outline btn-sm" onclick="openProfileForm()">Edit Profile & Upload PDF</button>
             <button class="btn btn-outline btn-sm" onclick="exportResumeJSON()">Export Resume JSON</button>
             <button class="btn btn-outline btn-sm" onclick="resetResumeData()">Reset Resume</button>
           </div>
@@ -795,7 +822,7 @@
 
   <footer class="container" style="border-top:1px solid var(--border);">
     <span>© <span id="year"></span> Praveen Kumar Gundimeda — AI Web Designer, Hyderabad.</span>
-    <div style="display:flex; gap:20px; flex-wrap:wrap;">
+    <div style="display:flex; gap:20px; flex-wrap:wrap; align-items:center;">
       <a href="mailto:gundimedapraveen@gmail.com" style="color:inherit; text-decoration:none;">gundimedapraveen@gmail.com</a>
       <a href="https://www.linkedin.com/in/praveen-kumar-gundimeda-133747134/" target="_blank" rel="noopener noreferrer" style="color:inherit; text-decoration:none;">LinkedIn ↗</a>
     </div>
@@ -942,9 +969,36 @@
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // Activate Studio Mode only when ?studio=1 is in the URL
+    function setStudioState(isStudio, showToastMsg = false) {
+      const btn = document.getElementById('studioToggleBtn');
+      if (isStudio) {
+        document.body.classList.remove('client-preview');
+        btn.textContent = '✓ Client View';
+        btn.classList.add('btn-studio-active');
+        if (showToastMsg) showToast('Studio Mode ON — Add/Edit options unlocked in Projects & Resume');
+      } else {
+        document.body.classList.add('client-preview');
+        btn.textContent = '⚙ Studio';
+        btn.classList.remove('btn-studio-active');
+        if (showToastMsg) showToast('Client Preview Mode ON');
+      }
+    }
+
+    function toggleStudioMode() {
+      const currentlyClientView = document.body.classList.contains('client-preview');
+      setStudioState(currentlyClientView, true);
+    }
+
+    function showToast(msg) {
+      const el = document.getElementById('studioToast');
+      el.textContent = msg;
+      el.classList.add('show');
+      setTimeout(() => el.classList.remove('show'), 2800);
+    }
+
+    // Also auto-enable if ?studio=1 is in the URL
     if (new URLSearchParams(window.location.search).get('studio') === '1') {
-      document.body.classList.remove('client-preview');
+      setStudioState(true, false);
     }
 
     function escapeHtml(str) {
@@ -1058,7 +1112,7 @@
         url: '',
         img: '',
         tools: ['Spline 3D', 'Framer AI', 'Midjourney', 'Cursor'],
-        summary: 'Interactive 3D hero showcase combined with an AI-structured conversion narrative (sample slot—update anytime via ?studio=1).',
+        summary: 'Interactive 3D hero showcase combined with an AI-structured conversion narrative (click ⚙ Studio in the top bar to edit).',
         details: 'Designed with an AI-first pipeline: Relume AI sitemap architecture, Midjourney custom 3D renders, Spline interactive hero scene, and Cursor-accelerated front-end code.'
       },
       {
@@ -1280,7 +1334,6 @@
       const data = getResumeData();
       const prof = data.profile || defaultResumeData.profile;
 
-      // Top Download / Print Buttons
       const actionsEl = document.getElementById('resumeDownloadActions');
       const hasUploadedPdf = Boolean(prof.resumeDataUrl);
       const hasUrlPdf = Boolean(prof.resumeUrl);
@@ -1294,7 +1347,6 @@
       buttonsHtml += `<button class="btn btn-outline" onclick="window.print()">Print / Save Resume PDF</button>`;
       actionsEl.innerHTML = buttonsHtml;
 
-      // Profile Card
       document.getElementById('profileCard').innerHTML = `
         <div class="avatar">PK</div>
         <h3 style="font-size:1.4rem; margin-bottom:6px;">${escapeHtml(prof.title)}</h3>
@@ -1309,7 +1361,6 @@
         </div>
       `;
 
-      // Timeline List
       const listEl = document.getElementById('resumeList');
       if (!data.items || !data.items.length) {
         listEl.innerHTML = `<div style="padding:36px; text-align:center; border:1px dashed var(--border); border-radius:var(--radius); color:var(--muted);">No resume entries yet.</div>`;
@@ -1484,11 +1535,6 @@
       a.setAttribute('href', dataStr);
       a.setAttribute('download', filename);
       a.click();
-    }
-
-    function toggleClientPreview() {
-      document.body.classList.add('client-preview');
-      history.replaceState(null, '', window.location.pathname);
     }
 
     /* ---------- 4. SUBTLE 3D CARD TILT ---------- */
